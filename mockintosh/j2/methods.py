@@ -18,7 +18,10 @@ from datetime import timedelta
 from uuid import uuid4
 
 from jsonpath_ng import parse as jsonpath_parse
-from jinja2.utils import contextfunction
+try:
+    from jinja2.utils import contextfunction
+except ImportError:
+    from jinja2.utils import pass_context as contextfunction
 from jinja2.exceptions import TemplateSyntaxError
 
 from mockintosh.helpers import _jinja_add_varname, _jinja_add_to_context
